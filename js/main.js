@@ -29,25 +29,30 @@ function setMap(){
 	//using promise.all() to parallelize asynchronous data loading
 	var promises = [
 		d3.csv ("data/calihealth.csv"),
-		d3.json("data/calicounty.topojson")
+		d3.json("data/calicounty.topojson"),
+		d3.json("data/northamerica.topojson")
 	];
 	Promise.all(promises).then(callback);
 
 	function callback(data){
 		var csvData = data[0];
-		var	california = data[1];
+		var california = data[1];
+		var northAmerica = data[2];
 		console.log(csvData);
 		console.log(california);
+		console.log(northAmerica)
 
+		var northAmericaStates = topojson.feature(northAmerica, northAmerica.objects["North America"]);
 		var californiaCounties = topojson.feature(california, california.objects.calicounty).features;
 
 		//examine results
+		console.log(northAmericaStates);
 		console.log(californiaCounties);
 
 		var graticule = d3.geoGraticule()
             .step([5, 5]); //place graticule lines every 5 degrees of longitude and latitude
 
-         var gratBackground = map.append("path")
+      var gratBackground = map.append("path")
             .datum(graticule.outline()) //bind graticule background
             .attr("class", "gratBackground") //assign class for styling
             .attr("d", path) //project graticule
@@ -59,8 +64,13 @@ function setMap(){
             .append("path") //append each element to the svg as a path element
             .attr("class", "gratLines") //assign class for styling
             .attr("d", path); //project graticule lines
+      // add states around california to map
+      var states = map.append("path")
+      	.datum(northAmericaStates) 
+      	.attr("class", "states")
+      	.attr("d", path);
 
-         // add california counties to the map
+       // add california counties to the map
 		var counties = map.selectAll(".county")
 			.data(californiaCounties)
 			.enter()
@@ -70,7 +80,5 @@ function setMap(){
 			})
 			.attr("d", path);
 			
-
-
 	}
 };

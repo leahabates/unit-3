@@ -27,3 +27,8 @@
 .map {
     border: medium solid #999;
 }
+.states {
+    fill: #FFF;
+    stroke: #CCC;
+    stroke-width: 2px;
+}
