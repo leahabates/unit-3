@@ -1,6 +1,6 @@
-﻿Name,Median House Hold Income,Poverty Rate,Unemployement Rate,Life Expectancy,Obesity Rate,Air Polluntion,% Fair or Poor Health,%Food Insecure,Latitude,Longitude
+﻿Name,Median Household Income,Poverty Rate,Unemployment Rate,Life Expectancy,Obesity Rate,Air Pollution,% Fair or Poor Health,% Food Insecure,Latitude,Longitude
 Alameda,121190,10,3.3,82.2,25,9.4,13,8,37.6090291,-121.89914
-Alpine,71646,27,5.4,,29,3.6,15,10,38.5893934,-119.8345
+Alpine,71646,27,5.4,79.2,29,3.6,15,10,38.5893934,-119.8345
 Amador,74356,12,4.4,78.8,30,6.4,15,9,38.449089,-120.5911
 Butte,63353,19,4.5,76.6,31,7.1,17,13,39.6519275,-121.58584
 Calaveras,73175,16,3.6,78.6,31,5.5,16,11,38.2558181,-120.49815

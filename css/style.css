@@ -32,3 +32,8 @@
     stroke: #CCC;
     stroke-width: 2px;
 }
+.county {
+    stroke: #FFFFFF;
+    stroke-width: 0.5 px;
+    stroke-linecap: round;
+}
