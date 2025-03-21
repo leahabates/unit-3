@@ -1,4 +1,7 @@
 /*insert style here*/
+body {
+    background-color: black;
+}
 .axis path,
 .axis line {
     fill: none;
@@ -7,33 +10,50 @@
     shape-rendering: crispEdges;
 }
 
-.axis text {
-    font-family: sans-serif;
-    font-size: 0.9em;
-}
-.title {
-    font-family: sans-serif;
-    font-size: 1.5em;
-    font-weight: bold;
-}
 .gratLines {
     fill: none;
-    stroke: #999;
-    stroke-width: 1px;
+    stroke: #FFF;
+    stroke-width: .5px;
 }
 .gratBackground {
-    fill: #D5E3FF;
+    fill: #000000;
 }
 .map {
-    border: medium solid #999;
+    border: medium solid #000;
+    margin:0 px 0 0 20px;
 }
 .states {
-    fill: #FFF;
+    fill: #000000;
     stroke: #CCC;
-    stroke-width: 2px;
+    stroke-width: 3px;
 }
 .county {
     stroke: #FFFFFF;
     stroke-width: 0.5 px;
     stroke-linecap: round;
+}
+.chart{
+    background-color: #000;
+    border: thin solid white;
+    float: right;
+    margin: 7 px 20px 0 0;
+}
+.chartTitle {
+    font-family: sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    fill: #FFF;
+
+}
+
+.chartFrame {
+    fill: none;
+    stroke: #FFF;
+    stroke-width: .5px;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: sans-serif;
+    font-size: 1em;
+    fill: #FFF;
 }

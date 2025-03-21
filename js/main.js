@@ -10,8 +10,8 @@ var expressed = attrArray[0]; // Initial attribute
     function setMap() {
 
         // Map frame dimensions
-        var width = 960,
-            height = 460;
+        var width = window.innerWidth * 0.5,
+            height = 473;
 
         // New SVG container for the map
         var map = d3.select("body")
@@ -65,8 +65,11 @@ var expressed = attrArray[0]; // Initial attribute
             
             // Add counties to the map
             setEnumerationUnits(californiaCounties, map, path, colorScale);
+
+            // Add coordinated visualization to the map
+            setChart(csvData, colorScale);
         }
-    };
+    }; // End of setMap()
 
     // Set graticule (grid lines) on the map
     function setGraticule(map, path) {
@@ -123,12 +126,7 @@ var expressed = attrArray[0]; // Initial attribute
     }
 
     function makeColorScale(data){
-    	var colorClasses = [
-        	"#D4B9DA",
-        	"#C994C7",
-        	"#DF65B0",
-        	"#DD1C77",
-        	"#980043"];
+    	var colorClasses = ['#ffffd4','#fed98e','#fe9929','#d95f0e','#993404'];
 
     	//create color scale generator
    		 var colorScale = d3.scaleQuantile()
@@ -167,4 +165,86 @@ var expressed = attrArray[0]; // Initial attribute
                 }    
             });
     }
+    //function to create a coordinated bar chart
+    function setChart(csvData, colorScale){
+        // Chart frame dimensions
+        var chartWidth = window.innerWidth * 0.425,
+            chartHeight = 473,
+            leftPadding = 25,
+            rightPadding = 2,
+            topBottomPadding = 5,
+            chartInnerWidth = chartWidth - leftPadding - rightPadding,
+            chartInnerHeight = chartHeight - topBottomPadding * 2,
+            translate = "translate(" + leftPadding + "," + topBottomPadding + ")";
+
+        // Create a second svg element to hold the bar chart
+        var chart = d3.select("body")
+            .append("svg")
+            .attr("width", chartWidth)
+            .attr("height", chartHeight)
+            .attr("class", "chart");
+
+        // Create a rectangel for chart background fill
+        var chartBackground = chart.append("rect")
+            .attr("class", chartBackground)
+            .attr("width", chartInnerWidth)
+            .attr("height", chartInnerHeight)
+            .attr("transform", translate);
+
+        // Create a scale to size bars proportionally to fram
+        var yScale = d3.scaleLinear()
+            .range([463, 0])
+            .domain([0,50]);
+
+        // Set bars for each county
+         var bars = chart.selectAll(".bar")
+            .data(csvData)
+            .enter()
+            .append("rect")
+            .sort(function(a, b){
+                return b[expressed]-a[expressed]
+            })
+            .attr("class", function(d){
+                return "bar " + d.NAME;
+            })
+            .attr("width", chartInnerWidth / csvData.length - 1)
+            .attr("x", function(d, i){
+                return i * (chartInnerWidth / csvData.length) + leftPadding;
+             })
+            .attr("height", function(d, i){
+                return 463 - yScale(parseFloat(d[expressed]));
+            })
+            .attr("y", function(d, i){
+                return yScale(parseFloat(d[expressed])) + topBottomPadding;
+            })
+            .style("fill", function(d){
+                return colorScale(d[expressed]);
+            });
+
+        // Create a text element for the Chart title
+        var chartTitle = chart.append("text")
+            .attr("x", chartWidth / 2)
+            .attr("y", 30)
+            .attr("text-anchor", "middle")
+            .attr("class", "chartTitle")
+            .text("The " + expressed + " in each county in California");
+
+        // Create vertical axis generator
+        var yAxis = d3.axisLeft()
+            .scale(yScale);
+
+        // Place Axis
+        var axis = chart.append("g")
+            .attr("class", "axis")
+            .attr("transform", translate)
+            .call(yAxis);
+
+        //Create frame for chart border
+
+        var chartFrame = chart.append("rect")
+            .attr("class", "chartFrame")
+            .attr("width", chartInnerWidth)
+            .attr("height", chartInnerHeight)
+            .attr("transform", translate);
+    };
 })();
