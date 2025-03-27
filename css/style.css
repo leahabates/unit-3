@@ -25,7 +25,7 @@ body {
 .states {
     fill: #000000;
     stroke: #CCC;
-    stroke-width: 3px;
+    stroke-width: 2px;
 }
 .county {
     stroke: #FFFFFF;
@@ -34,7 +34,7 @@ body {
 }
 .chart{
     background-color: #000;
-    border: thin solid white;
+    /*border: thin solid white;*/
     float: right;
     margin: 7 px 20px 0 0;
 }
@@ -56,4 +56,79 @@ body {
     font-family: sans-serif;
     font-size: 1em;
     fill: #FFF;
+    z-index: 100;
+}
+.dropdown{
+    position: absolute;
+    top: 30 px;
+    left: 40px;
+    z-index: 10;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 2px;
+    border: 1px solid #000;
+    color: #000;
+}
+.option {
+    font-weight: normal;
+}
+.infolabel {    margin: 0 20px 0 0;    position: absolute;
+    height: 50px;
+    min-width: 100px;
+    color: #fff;
+    background-color: #000;
+    border: solid thin #fff;
+    padding: 5px 10px;
+    top: -75px;
+    font-family: sans-serif;
+}
+.lablename{
+    color: #FFF;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.infolabel h1 {
+    margin: 0 20px 0 0;
+    padding: 0;
+    display: inline-block;
+    line-height: 1em;
+}
+.legend {
+    position: relative;
+    bottom: px; /* Adjust this value to move the legend up/down */
+    left: 15%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8); /* Transparent background for the legend */
+    padding: 10px;
+    z-index: 10;
+}
+
+.legendTitle {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    margin-bottom: 10px; /* Space between title and color boxes */
+    z-index: 10;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;  /* Space between each item */
+}
+
+.legendItem rect {
+    width: 30px; /* Width of the color box */
+    height: 15px; /* Height of the color box */
+    margin-right: 10px;  /* Space between the color box and label */
+}
+
+.legendItem text {
+    font-family: sans-serif;
+    font-size: 12px;
+    fill: #FFF;
+    text-align: center;
 }
