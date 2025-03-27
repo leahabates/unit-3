@@ -97,7 +97,6 @@ body {
 }
 .legend {
     position: relative;
-    bottom: px; /* Adjust this value to move the legend up/down */
     left: 15%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8); /* Transparent background for the legend */
