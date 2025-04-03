@@ -60,8 +60,8 @@ body {
 }
 .dropdown{
     position: absolute;
-    top: 30 px;
-    left: 40px;
+    top: 40 px;
+    left: 20px;
     z-index: 10;
     font-family: sans-serif;
     font-size: 1em;
@@ -96,20 +96,20 @@ body {
     line-height: 1em;
 }
 .legend {
-    position: relative;
+    position: absolute;
     left: 15%;
+    bottom: 0%;
     transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8); /* Transparent background for the legend */
-    padding: 10px;
+    background-color: rgba(0, 0, 0, 0); /* Transparent background for the legend */
     z-index: 10;
 }
 
 .legendTitle {
     font-family: sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #FFF;
-    margin-bottom: 10px; /* Space between title and color boxes */
+    margin-bottom: 30px; /* Space between title and color boxes */
     z-index: 10;
 }
 
@@ -122,7 +122,7 @@ body {
 .legendItem rect {
     width: 30px; /* Width of the color box */
     height: 15px; /* Height of the color box */
-    margin-right: 10px;  /* Space between the color box and label */
+    margin-right: 5px;  /* Space between the color box and label */
 }
 
 .legendItem text {
@@ -130,4 +130,17 @@ body {
     font-size: 12px;
     fill: #FFF;
     text-align: center;
+}
+.description-container {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+
+}
+.description-container h3 {
+    margin: 0;
+    padding-bottom: 0px;
 }

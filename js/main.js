@@ -26,7 +26,7 @@ window.onload = setMap;
 
         // Map frame dimensions
         var width = window.innerWidth * 0.5,
-            height = window.innerHeight * 0.75;
+            height = window.innerHeight * 1;
 
         // New SVG container for the map
         var map = d3.select("body")
@@ -44,6 +44,40 @@ window.onload = setMap;
             .translate([width / 2, height / 2]);
 
         var path = d3.geoPath().projection(projection);
+
+        var descriptionContainer = d3.select("body").append("div")
+            .attr("class", "description-container")
+            .style("position", "absolute")
+            .style("bottom", "20px")
+            .style("right", "5px")
+            .style("background", "#000")
+            .style("color", "#FFF")
+            .style("border-radius", "5px")
+            .style("font-family", "Arial, sans-serif")
+            .style("width", window.innerWidth * 0.45 + "px")
+            .style("height", window.innerHeight * 0.46 +"px")
+            .html(`
+                 <h3>Socioeconomic Health Indicators in California</h1>
+                <p>In California, the overall well-being of its population is shaped by several key socioeconomic and environmental factors. These indicators provide crucial insights into the health challenges faced by different communities. Below, we explore some of the most important factors impacting public health.</p>
+                The <strong>percentage of individuals reporting fair or poor health</strong> is a critical measure of the population’s overall health. This indicator reflects the number of people who struggle with chronic illnesses or conditions that affect their quality of life. Poor health status can be linked to several other socioeconomic factors, such as income and access to healthcare.
+                
+                The <strong>percentage of food insecure individuals</strong> highlights the lack of access to sufficient nutritious food. This issue is closely tied to both <strong>physical health</strong> and <strong>mental well-being</strong>, as food insecurity can lead to malnutrition, stress, and a greater risk of chronic diseases. Areas with higher food insecurity often experience poorer health outcomes.
+                
+                <strong>Air pollution</strong> is a significant environmental factor affecting public health. Poor air quality can cause respiratory diseases and worsen conditions like asthma, particularly in <strong>vulnerable communities</strong>. High pollution levels often correlate with areas of higher poverty, exacerbating health disparities across California.
+                
+                <strong>Life expectancy</strong> is an important indicator of overall health outcomes in California. It reflects the average number of years a person can expect to live, which is strongly influenced by other factors such as access to healthcare, lifestyle, and environmental conditions. <strong>Life expectancy can vary significantly</strong> between regions, with those in more deprived areas often experiencing lower life expectancies due to higher rates of illness and limited healthcare access.
+                
+                <strong>Median household income</strong> plays a central role in shaping the health of Californians. Those in higher-income households generally have <strong>better access to healthcare</strong>, healthier living environments, and more opportunities for education. In contrast, those living in poverty are more likely to face <strong>health challenges</strong> related to housing instability, inadequate nutrition, and limited access to health resources.
+                
+                The <strong>obesity rate</strong> is another significant health concern. Obesity is a known risk factor for various chronic diseases, including <strong>diabetes</strong>, <strong>heart disease</strong>, and certain <strong>cancers</strong>. Socioeconomic factors such as income, food insecurity, and access to healthy lifestyles all contribute to the obesity epidemic, which disproportionately affects lower-income populations.
+               
+                The <strong>poverty rate</strong> directly impacts health outcomes. High poverty rates correlate with increased <strong>health disparities</strong>, as people living in poverty often experience poor living conditions, limited access to quality healthcare, and increased stress. Poverty is also linked to higher rates of <strong>chronic illness</strong> and <strong>mental health issues</strong>.
+                
+                The <strong>unemployment rate</strong> is a key socio-economic indicator of economic stability. High unemployment often leads to <strong>financial strain</strong>, which in turn can cause stress, worsen mental health, and limit access to healthcare and other resources. <strong>Joblessness</strong> is frequently associated with poorer health outcomes, especially in communities facing other socioeconomic challenges.
+                
+                Together, these attributes form a comprehensive picture of the <strong>socioeconomic health challenges</strong> faced by Californians. High levels of food insecurity, poverty, and unemployment—along with poor environmental factors such as air pollution—significantly impact public health outcomes. Addressing these issues requires <strong>targeted interventions</strong> in the most affected communities to improve overall health and well-being across the state.
+                <h3>Sources: County Health Rankings & Roadmaps (https://www.countyhealthrankings.org/health-data/california?year=2024&mapView=state)</h3>
+                `);
 
         // Using Promise.all() to parallelize asynchronous data loading
         var promises = [
@@ -239,7 +273,7 @@ window.onload = setMap;
 
         // Create a text element for the Chart title
         var chartTitle = chart.append("text")
-            .attr("x", chartWidth / 2)
+            .attr("x", chartWidth/2 )
             .attr("y", 30)
             .attr("text-anchor", "middle")
             .attr("class", "chartTitle")
@@ -487,7 +521,7 @@ window.onload = setMap;
     function setLegend(colorScale, csvData){
         // define the legen size and position
         var legendWidth = window.innerWidth * 0.25,
-            legendHeight = window.innerHeight * 0.10;
+            legendHeight = window.innerHeight * 0.1;
 
         // get map height dynamically
         var mapHeight = d3.select(".map").node().getBoundingClientRect().height;
@@ -518,7 +552,7 @@ window.onload = setMap;
         legend.append("text")
             .attr("class", "legendTitle")
             .attr("x", 5)
-            .attr("y", 15)  // Adjust Y positioning
+            .attr("y", 14)  // Adjust Y positioning
             .style("font-size", "16px") // Make the title larger
             .style("font-weight", "bold")
             .style("fill", "#FFF") // Ensure it's white and visible
