@@ -33,10 +33,13 @@ body {
     stroke-linecap: round;
 }
 .chart{
+    position: absolute;
     background-color: #000;
     /*border: thin solid white;*/
-    float: right;
     margin: 7 px 20px 0 0;
+    width: 47.5vw;
+    height: 47.3vh;
+    right: 0vw;
 }
 .chartTitle {
     font-family: sans-serif;
@@ -97,11 +100,11 @@ body {
 }
 .legend {
     position: absolute;
-    left: 15%;
-    bottom: 0%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0); /* Transparent background for the legend */
+    left: 2vw;
+    bottom: 5vh;
     z-index: 10;
+    height: 25vh;
+    width: 25w;
 }
 
 .legendTitle {
@@ -132,13 +135,18 @@ body {
     text-align: center;
 }
 .description-container {
-    position: absolute;
-    bottom: 10px;
-    right: 20px;
-    border-radius: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-
+    position: relative;
+    bottom: 5vh;   /* 2% from the bottom of the viewport */
+    right: 0vw;    /* 2% from the right of the viewport */
+    width: 45vw;   /* 45% of the viewport width */
+    height: 40vh;  /* 46% of the viewport height */
+    background-color: #000; /* Example background color */
+    color: #FFF;   /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px;  /* Add some padding */
+    font-family: Arial, sans-serif; /* Set a font */
+    /*overflow: auto; /* In case content overflows */
+    z-index: 15;
 }
 .description-container h3 {
     margin: 0;

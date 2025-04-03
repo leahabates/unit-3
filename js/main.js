@@ -6,7 +6,7 @@ var expressed = attrArray[0]; // Initial attribute
 
 // Chart frame dimensions
 var chartWidth = window.innerWidth * 0.475,
-    chartHeight = 473,
+    chartHeight = window.innerHeight * 0.473,
     leftPadding = 45,
     rightPadding = 2,
     topBottomPadding = 5,
@@ -48,35 +48,34 @@ window.onload = setMap;
         var descriptionContainer = d3.select("body").append("div")
             .attr("class", "description-container")
             .style("position", "absolute")
-            .style("bottom", "20px")
-            .style("right", "5px")
             .style("background", "#000")
             .style("color", "#FFF")
             .style("border-radius", "5px")
             .style("font-family", "Arial, sans-serif")
-            .style("width", window.innerWidth * 0.45 + "px")
-            .style("height", window.innerHeight * 0.46 +"px")
+
             .html(`
                  <h3>Socioeconomic Health Indicators in California</h1>
-                <p>In California, the overall well-being of its population is shaped by several key socioeconomic and environmental factors. These indicators provide crucial insights into the health challenges faced by different communities. Below, we explore some of the most important factors impacting public health.</p>
-                The <strong>percentage of individuals reporting fair or poor health</strong> is a critical measure of the population’s overall health. This indicator reflects the number of people who struggle with chronic illnesses or conditions that affect their quality of life. Poor health status can be linked to several other socioeconomic factors, such as income and access to healthcare.
-                
-                The <strong>percentage of food insecure individuals</strong> highlights the lack of access to sufficient nutritious food. This issue is closely tied to both <strong>physical health</strong> and <strong>mental well-being</strong>, as food insecurity can lead to malnutrition, stress, and a greater risk of chronic diseases. Areas with higher food insecurity often experience poorer health outcomes.
-                
-                <strong>Air pollution</strong> is a significant environmental factor affecting public health. Poor air quality can cause respiratory diseases and worsen conditions like asthma, particularly in <strong>vulnerable communities</strong>. High pollution levels often correlate with areas of higher poverty, exacerbating health disparities across California.
-                
-                <strong>Life expectancy</strong> is an important indicator of overall health outcomes in California. It reflects the average number of years a person can expect to live, which is strongly influenced by other factors such as access to healthcare, lifestyle, and environmental conditions. <strong>Life expectancy can vary significantly</strong> between regions, with those in more deprived areas often experiencing lower life expectancies due to higher rates of illness and limited healthcare access.
-                
-                <strong>Median household income</strong> plays a central role in shaping the health of Californians. Those in higher-income households generally have <strong>better access to healthcare</strong>, healthier living environments, and more opportunities for education. In contrast, those living in poverty are more likely to face <strong>health challenges</strong> related to housing instability, inadequate nutrition, and limited access to health resources.
-                
-                The <strong>obesity rate</strong> is another significant health concern. Obesity is a known risk factor for various chronic diseases, including <strong>diabetes</strong>, <strong>heart disease</strong>, and certain <strong>cancers</strong>. Socioeconomic factors such as income, food insecurity, and access to healthy lifestyles all contribute to the obesity epidemic, which disproportionately affects lower-income populations.
-               
-                The <strong>poverty rate</strong> directly impacts health outcomes. High poverty rates correlate with increased <strong>health disparities</strong>, as people living in poverty often experience poor living conditions, limited access to quality healthcare, and increased stress. Poverty is also linked to higher rates of <strong>chronic illness</strong> and <strong>mental health issues</strong>.
-                
-                The <strong>unemployment rate</strong> is a key socio-economic indicator of economic stability. High unemployment often leads to <strong>financial strain</strong>, which in turn can cause stress, worsen mental health, and limit access to healthcare and other resources. <strong>Joblessness</strong> is frequently associated with poorer health outcomes, especially in communities facing other socioeconomic challenges.
-                
-                Together, these attributes form a comprehensive picture of the <strong>socioeconomic health challenges</strong> faced by Californians. High levels of food insecurity, poverty, and unemployment—along with poor environmental factors such as air pollution—significantly impact public health outcomes. Addressing these issues requires <strong>targeted interventions</strong> in the most affected communities to improve overall health and well-being across the state.
-                <h3>Sources: County Health Rankings & Roadmaps (https://www.countyhealthrankings.org/health-data/california?year=2024&mapView=state)</h3>
+                <p>In California, public health is influenced by key socioeconomic and environmental factors. These include:
+
+                Fair or Poor Health: A measure of chronic illness and poor quality of life, often linked to income and healthcare access.
+
+                Food Insecurity: Lack of nutritious food impacts both physical and mental health, contributing to malnutrition, stress, and chronic diseases.
+
+                Air Pollution: Poor air quality causes respiratory issues and exacerbates health disparities, particularly in vulnerable communities.
+
+                Life Expectancy: Varies by region, influenced by healthcare access, lifestyle, and environmental conditions, with lower life expectancy in deprived areas.
+
+                Median Household Income: Higher income generally provides better healthcare, living conditions, and education, while poverty increases health risks.
+
+                Obesity Rate: A major health concern tied to chronic diseases, influenced by socioeconomic factors such as income and access to healthy lifestyles.
+
+                Poverty Rate: High poverty correlates with health disparities, poor living conditions, and limited healthcare access.
+
+                Unemployment Rate: High unemployment leads to financial strain, stress, and poor mental health, with negative impacts on overall health.
+
+                These factors collectively shape California's health landscape, highlighting the need for targeted interventions in communities facing the greatest challenges.
+                <h3>Sources: </h3>
+                <p>County Health Rankings & Roadmaps (https://www.countyhealthrankings.org/health-data/california?year=2024&mapView=state)</p>
                 `);
 
         // Using Promise.all() to parallelize asynchronous data loading
@@ -521,7 +520,7 @@ window.onload = setMap;
     function setLegend(colorScale, csvData){
         // define the legen size and position
         var legendWidth = window.innerWidth * 0.25,
-            legendHeight = window.innerHeight * 0.1;
+            legendHeight = window.innerHeight *.1;
 
         // get map height dynamically
         var mapHeight = d3.select(".map").node().getBoundingClientRect().height;
@@ -535,7 +534,6 @@ window.onload = setMap;
             .attr("class", "legend")
             .attr("width", legendWidth)
             .attr("height", legendHeight + 30)
-            .attr("transform", "translate(" + (leftPadding + chartWidth + 50) + "," + bottomMargin + ")");
             
 
         // define the color classes (range) and labels
