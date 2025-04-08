@@ -341,7 +341,7 @@ window.onload = setMap;
         var minVal = d3.min(domainArray);
         var maxVal = d3.max(domainArray);
 
-        var buffer = (maxVal - minVal) * 0.05;
+        var buffer = (maxVal - minVal) * 0.15;
 
         yScale.domain([Math.max(0, minVal - buffer), (maxVal+ buffer)]); 
 
@@ -391,7 +391,8 @@ window.onload = setMap;
                 return i * (chartInnerWidth/n) + leftPadding})
             // Size/Resize of bars
             .attr("height", function(d, i){
-                return chartInnerHeight - yScale(parseFloat(d[expressed]))
+                var barHeight = chartInnerHeight - Math.floor(yScale(parseFloat(d[expressed])));
+                return barHeight > 0 ? barHeight : 0;
             })
             .attr("y", function(d, i){
                 return yScale(parseFloat(d[expressed])) + topBottomPadding;
